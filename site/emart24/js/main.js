@@ -24,7 +24,7 @@ try {
 				})
 
 				//섹션 애니메이션
-				$(window).on('scroll', function(){
+				$(window).on('scroll load', function(){
 					var scrollTop = $(window).scrollTop(),
 						winBottom = scrollTop + $(window).height(),
 						$section = $('.scroll_ani');
@@ -108,15 +108,6 @@ try {
 							settings: {
 								swipe: true,
 								draggable: true
-							}
-						},
-						{
-							breakpoint: 641,
-							settings: {
-								slidesToShow: 1,
-								swipe: true,
-								draggable: true,
-								variableWidth: true,
 							}
 						}]
 				});
@@ -221,41 +212,90 @@ try {
 					$Myslide.slick('setPosition');
 				});
 
+				//only이마트 슬라이드
+				$(window).on('load resize', function(){
+					var $onlyEmart = $('.only_emart'),
+						$onlyEmartSlide = $onlyEmart.find('.slide_list');
 
-				//스토리 슬라이드
-				var $story = $('.story'),
-					$storySlide = $story.find('.slide_list'),
-					$storyControl = $story.find('.control_box');
-
-					$storySlide.slick({
+					$onlyEmartSlide.slick({
 						autoplay: false,
-						arrows:true,
+						arrows:false,
 						dots: false,
 						slidesToShow: 3,
 						slidesToScroll: 1,
 						infinite: false,
 						swipe: false,
 						draggable: false,
-						prevArrow: $storyControl.find('.prev'),
-						nextArrow: $storyControl.find('.next'),
-						variableWidth:true,
-						//추가 기능
-						isRunOnLowIE: false,
-						pauseOnArrowClick: true,
-						pauseOnDirectionKeyPush: true,
-						pauseOnSwipe: true,
-						pauseOnDotsClick: true,
 						responsive: [
 							{
-								breakpoint: 1451,
+								breakpoint: 9999,
+								settings: 'unslick'
+							},
+							{
+								breakpoint: 1001,
 								settings: {
 									swipe: true,
 									draggable: true,
-									swipeToSlide: true
+									swipeToSlide: true,
+								}
+							},
+							{
+								breakpoint: 801,
+								settings: {
+									swipe: true,
+									draggable: true,
+									swipeToSlide: true,
+									centerMode: true,
+									initialSlide: 1,
+									slidesToShow: 1,
 								}
 							}
 						]
 					});
+
+				});
+				
+
+
+				//스토리 슬라이드
+				var $story = $('.story'),
+					$storySlide = $story.find('.slide_list'),
+					$storyControl = $story.find('.control_box');
+
+				$storySlide.slick({
+					autoplay: false,
+					arrows:true,
+					dots: false,
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					infinite: false,
+					swipe: false,
+					draggable: false,
+					prevArrow: $storyControl.find('.prev'),
+					nextArrow: $storyControl.find('.next'),
+					variableWidth:true,
+					//추가 기능
+					isRunOnLowIE: false,
+					pauseOnArrowClick: true,
+					pauseOnDirectionKeyPush: true,
+					pauseOnSwipe: true,
+					pauseOnDotsClick: true,
+					responsive: [
+						{
+							breakpoint: 1001,
+							settings: {
+								swipe: true,
+								draggable: true,
+								swipeToSlide: true,
+								variableWidth:false,
+								centerMode:true,
+								slidesToShow: 1,
+								centerPadding: '20%',
+								initialSlide: 1
+							}
+						}
+					]
+				});
 
 				$storySlide.on('beforeChange', function(event, slick, currentSlide, nextSlide){
 					if($(this).hasClass('odd')){
