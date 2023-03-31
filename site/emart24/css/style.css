@@ -193,6 +193,8 @@ a:focus { text-decoration: underline; }
 
 a:active { color: #555; text-decoration: none; }
 
+input, textarea, button { appearance: none; -moz-appearance: none; -webkit-appearance: none; border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; }
+
 #wrapper { position: relative; max-width: 1920px; min-width: 1232px; overflow: hidden; margin: 0 auto; }
 
 .wrap { position: relative; width: 1232px; margin: 0 auto; }
@@ -431,7 +433,7 @@ body { font-family: 'Noto Sans KR', sans-serif; font-size: 16px; }
 
 @media (max-width: 800px) { .only_emart { margin-top: 90px; }
   .only_emart .title_box span { display: none; }
-  .only_emart .only_slide .slick-list { padding: 20px 20% 80px; }
+  .only_emart .only_slide .slick-list { padding: 20px 20% 80px !important; }
   .only_emart .only_slide .slide_item { opacity: 1; }
   .only_emart .only_slide .slide_item.slick-active { opacity: 1; }
   .only_emart .only_slide .slide_item a .img_box { height: 50vw; } }
